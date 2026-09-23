@@ -8,7 +8,7 @@
 
 1. 在 Cloudflare 控制台打开 **Workers & Pages → Create application → Import a repository**，连接本仓库。
 2. 选择生产分支 `main`，Worker 名称设为 `subconverter-cf`（须与 `wrangler.jsonc` 一致）。项目根目录使用仓库根目录。
-3. 部署命令设为 `pnpm run deploy`；依赖安装使用 `pnpm install --frozen-lockfile`。保存并部署。首次容器配置可能要等待几分钟。
+3. 构建命令留空，部署命令设为 `pnpm run deploy`。Cloudflare 会根据锁文件安装依赖。保存并部署。首次容器配置可能要等待几分钟。
 4. 打开这个 Worker 的 **Settings → Variables and Secrets**，新增 Secret `ACCESS_KEY`，值使用足够长的随机字符串；保存后重新部署，使 Secret 生效。设置好之前 `/sub` 会返回 403。
 5. 访问 `https://你的Worker地址/version`，确认返回 subconverter 的版本文字。
 
